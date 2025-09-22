@@ -23,7 +23,14 @@ public class GUI {
             JPanel languagePanel = new JPanel();
             JTextField languageField = new JTextField(10);
             languagePanel.add(new JLabel("Language:"));
-            languagePanel.add(languageField);
+
+
+            Translator translator = new CanadaTranslator();
+            JComboBox<String> languageComboBox = new JComboBox<>();
+            for(String countryCode : translator.getLanguageCodes()) {
+                languageComboBox.addItem(countryCode);
+            }
+            languagePanel.add(languageComboBox);
 
             JPanel buttonPanel = new JPanel();
             JButton submit = new JButton("Submit");
