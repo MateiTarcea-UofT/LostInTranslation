@@ -26,8 +26,10 @@ public class GUI {
 
 
             Translator translator = new CanadaTranslator();
+            LanguageCodeConverter converter = new LanguageCodeConverter();
             JComboBox<String> languageComboBox = new JComboBox<>();
             for(String countryCode : translator.getLanguageCodes()) {
+                languageComboBox.addItem(converter.fromLanguageCode(countryCode));
                 languageComboBox.addItem(countryCode);
             }
             languagePanel.add(languageComboBox);
@@ -40,6 +42,28 @@ public class GUI {
             buttonPanel.add(resultLabelText);
             JLabel resultLabel = new JLabel("\t\t\t\t\t\t\t");
             buttonPanel.add(resultLabel);
+
+            // add listener for when an item is selected.
+            languageComboBox.addItemListener(new ItemListener() {
+
+                /**
+                 * Invoked when an item has been selected or deselected by the user.
+                 * The code written for this method performs the operations
+                 * that need to occur when an item is selected (or deselected).
+                 *
+                 * @param e the event to be processed
+                 */
+                @Override
+                public void itemStateChanged(ItemEvent e) {
+
+                    if (e.getStateChange() == ItemEvent.SELECTED) {
+                        String country = languageComboBox.getSelectedItem().toString();
+//                        JOptionPane.showMessageDialog(null, "user selected " + country + "!");
+                    }
+                }
+
+
+            });
 
 
             // adding listener for when the user clicks the submit button
@@ -65,8 +89,8 @@ public class GUI {
 
             JPanel mainPanel = new JPanel();
             mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-            mainPanel.add(countryPanel);
             mainPanel.add(languagePanel);
+            mainPanel.add(countryPanel);
             mainPanel.add(buttonPanel);
 
             JFrame frame = new JFrame("Country Name Translator");
