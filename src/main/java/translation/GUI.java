@@ -28,9 +28,9 @@ public class GUI {
             Translator translator = new CanadaTranslator();
             LanguageCodeConverter converter = new LanguageCodeConverter();
             JComboBox<String> languageComboBox = new JComboBox<>();
-            for(String countryCode : translator.getLanguageCodes()) {
+            JSONTranslator jsonTranslator = new JSONTranslator();
+            for(String countryCode : jsonTranslator.getLanguageCodes()) {
                 languageComboBox.addItem(converter.fromLanguageCode(countryCode));
-                languageComboBox.addItem(countryCode);
             }
             languagePanel.add(languageComboBox);
 
