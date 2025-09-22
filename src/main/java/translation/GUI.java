@@ -92,7 +92,7 @@ public class GUI {
                 public void itemStateChanged(ItemEvent e) {
 
                     if (e.getStateChange() == ItemEvent.SELECTED) {
-                        String country = languageComboBox.getSelectedItem().toString();
+                        String language = languageComboBox.getSelectedItem().toString();
 //                        JOptionPane.showMessageDialog(null, "user selected " + country + "!");
                     }
                 }
