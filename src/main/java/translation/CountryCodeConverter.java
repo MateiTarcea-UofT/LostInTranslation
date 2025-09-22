@@ -57,7 +57,7 @@ public class CountryCodeConverter {
      * @return the name of the country corresponding to the code
      */
     public String fromCountryCode(String code) {
-        return this.countryCodeToCountry.get(code);
+        return this.countryCodeToCountry.get(code.toUpperCase());
     }
 
     /**
